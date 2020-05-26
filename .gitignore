@@ -3,8 +3,8 @@
 # Edit at https://www.gitignore.io/?templates=1c-bitrix,visualstudiocode
 
 ### 1C-Bitrix ###
- core
-/bitrix/
+ #core
+#/bitrix/
 ##phpstorm##
 .idea/
 

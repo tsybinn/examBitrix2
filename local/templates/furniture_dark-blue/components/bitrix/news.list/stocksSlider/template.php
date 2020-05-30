@@ -1,12 +1,12 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
-dump($arResult["ITEMS"][0]);
+dump($arResult);
 
 ?>
 
 <?use Bitrix\Main\Page\Asset;
 //Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/components/bitrix/news.list/stocksSlider/jquery-1.8.2.min.js");
 //Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/components/bitrix/news.list/stocksSlider/slides.min.jquery.js");
-Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . "/components/bitrix/news.list/stocksSlider/style.css");
+//Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . "/components/bitrix/news.list/stocksSlider/style.css");
 
 ?>
 <script>

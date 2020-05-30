@@ -4,7 +4,7 @@
 
 ### 1C-Bitrix ###
  #core
-#/bitrix/
+/bitrix/php_interface/
 ##phpstorm##
 .idea/
 

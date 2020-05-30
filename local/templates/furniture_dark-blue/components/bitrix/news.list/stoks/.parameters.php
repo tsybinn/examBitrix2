@@ -22,12 +22,12 @@ $arTemplateParameters = array(
 		"TYPE" => "CHECKBOX",
 		"DEFAULT" => "Y",
 	),
-	"LIST_PREV_PICT_W" => Array(
+	"PREV_PICT_W" => Array(
 		"NAME" => GetMessage("WIDTH_IMAGE"),
 		"TYPE" => "STRING",
 		"DEFAULT" => "100",
 	),
-	"LIST_PREV_PICT_H" => Array(
+	"PREV_PICT_H" => Array(
 		"NAME" => GetMessage("HEIGHT_IMAGE"),
 		"TYPE" => "STRING",
 		"DEFAULT" => "100",

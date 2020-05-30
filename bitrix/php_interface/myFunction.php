@@ -1,7 +1,7 @@
 <?
 function dump($arr){
-
-        var_dump($arr);
+echo "<pre>";
+        print_r($arr);
  
  
  

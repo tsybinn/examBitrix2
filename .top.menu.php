@@ -48,15 +48,13 @@ $aMenuLinks = Array(
 		Array(), 
 		Array(), 
 		"" 
+	),
+	Array(
+		"контакты", 
+		"/kontakty/", 
+		Array(), 
+		Array(), 
+		"" 
 	)
 );
-
-
-var_dump($aMenuLinks);
-
-$e = 2;
-
-
-echo $e;
-
 ?>

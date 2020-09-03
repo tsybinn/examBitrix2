@@ -2,7 +2,7 @@
 <?
 $aMenuLinks = Array(
 	Array(
-		"О компании", 
+		"Курсы валют",
 		"./", 
 		Array(), 
 		Array(), 

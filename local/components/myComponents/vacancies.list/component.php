@@ -4,7 +4,7 @@
         $arParams['IBLOCK_ID'] = intval($arParams['IBLOCK_ID']); // in integer
     //	var_dump($arParams);
 
-        if ($arParams['IBLOCK_ID'] > 0 && $this->StartResultCache( // роверка есть ли валидный кеш
+        if ($arParams['IBLOCK_ID'] > 0 && $this->StartResultCache( // cache check
     	false, ($arParams["CACHE_GROUPS"] === "N" ? false : $USER->GetGroups()))) {
         	if(!CModule::IncludeModule("iblock")) {
 			$this->AbortResultCache();
@@ -12,7 +12,8 @@
 			return;
 		}
         //var_dump($arParams);
-        $arFilter = array('IBLOCK_ID' => $arParams["IBLOCK_ID"], 'GLOBAL_ACTIVE' => 'Y');
+
+            $arFilter = array('IBLOCK_ID' => $arParams["IBLOCK_ID"], 'GLOBAL_ACTIVE' => 'Y');
         $arSelect = array();
         $db_list = CIBlockSection::GetList(array("SORT" => "ASC"), $arFilter, $arSelect); //  choose sections
         while ($ar_result = $db_list->GetNext()) {
@@ -53,12 +54,30 @@
                 $arCatlog [$arRes["IBLOCK_SECTION_ID"]][] = $arRes;// sort array by IBLOCK_SECTION_ID
                 //var_dump($arRes);
             }
+
+            $LAST_ITEM_IBLOCK_ID = $arRes["IBLOCK_ID"]; // for ERMITAZH
         }
-        $arResult = array_combine($arSectName, $arCatlog); //name catalog in key
+        $arResult ["ITEMS"] = array_combine($arSectName, $arCatlog); //name catalog in key
+            $arResult["LAST_ITEM_IBLOCK_ID"]=$LAST_ITEM_IBLOCK_ID;
         //var_dump($arResult);
         //return $arResult;
-            $this->SetResultCacheKeys(array(
-            ));
-                $this->IncludeComponentTemplate();  //connection template
+
+            $this->SetResultCacheKeys(array(LAST_ITEM_IBLOCK_ID)); // заносим в кеш
+            $this->IncludeComponentTemplate();  //connection template
     }
+        // для корректной работы эрмитажа для случаев, когда кеш уже собран
+
+
+    if(
+        $arResult["LAST_ITEM_IBLOCK_ID"] > 0
+        && $USER->IsAuthorized()
+        && $APPLICATION->GetShowIncludeAreas()
+        && CModule::IncludeModule("iblock")
+    )
+    {
+        $arButtons = CIBlock::GetPanelButtons($arResult["LAST_ITEM_IBLOCK_ID"], 0, 0, array("SECTION_BUTTONS"=>false));
+        $this->addIncludeAreaIcons(CIBlock::GetComponentMenu($APPLICATION->GetPublicShowMode(), $arButtons));
+    }
+
+
 ?>

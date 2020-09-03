@@ -14,6 +14,10 @@ if (file_exists($_SERVER["DOCUMENT_ROOT"]."/bitrix/php_interface/include/event_h
     };
 
 
+// файл /bitrix/php_interface/init.php
+// регистрируем обработчик
+    AddEventHandler("iblock", "OnBeforeIBlockElementDelete", Array("MyClass", "OnBeforeIBlockElementDeleteHandler"));
+
 
 
 

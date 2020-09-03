@@ -1,17 +1,30 @@
 <?
     require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
     $APPLICATION->SetTitle("test");
-?><?$APPLICATION->IncludeComponent("myComponents:vacancies.list", "current", Array(
-	"CACHE_GROUPS" => "Y",	// Учитывать права доступа
-		"CACHE_TIME" => "180",	// Время кеширования (сек.)
-		"CACHE_TYPE" => "A",	// Тип кеширования
-		"DETAIL_URL" => "",
-		"IBLOCK_ID" => "4",	// Инфоблок
-		"IBLOCK_PROP" => "",
-		"IBLOCK_TYPE" => "vacancies",	// Тип инфоблока
-		"IMG_HEIGHT1" => "99",
-		"IMG_WIDTH1" => "99",
-		"PARENT_SECTION" => "",	// ID раздела
+    
+?><br>
+   <?$APPLICATION->IncludeComponent(
+	"myComponents:taskAlt.list", 
+	".default", 
+	array(
+		"CACHE_GROUPS" => "Y",
+		"CACHE_TIME" => "180",
+		"CACHE_TYPE" => "A",
+		"DISPLAY_BOTTOM_PAGER" => "Y",
+		"DISPLAY_TOP_PAGER" => "N",
+		"ELEMENT_COUNT" => "5",
+		"IBLOCK_ID" => "7",
+		"IBLOCK_TYPE" => "taskAlt",
+		"PAGER_BASE_LINK_ENABLE" => "N",
+		"PAGER_DESC_NUMBERING" => "N",
+		"PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+		"PAGER_SHOW_ALL" => "N",
+		"PAGER_SHOW_ALWAYS" => "N",
+		"PAGER_TEMPLATE" => "templatesMy",
+		"PAGER_TITLE" => "",
+		"PROPERTY_CODE" => array(
+			0 => "COUNTVOTING",
+		),
 		"COMPONENT_TEMPLATE" => ".default"
 	),
 	false
